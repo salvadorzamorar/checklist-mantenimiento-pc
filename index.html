@@ -2,184 +2,1236 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="theme-color" content="#005b9f">
+
 <title>¿Mi computadora necesita mantenimiento?</title>
+
 <style>
+
 :root{
-  --azul:#005b9f; --azul2:#0b78bd; --naranja:#f59b00;
-  --verde:#198754; --rojo:#dc3545; --gris:#f4f7fa; --texto:#17212b;
+    --azul:#005b9f;
+    --azul-claro:#0b78bd;
+    --naranja:#f59b00;
+    --verde:#198754;
+    --amarillo:#ffc107;
+    --rojo:#dc3545;
+    --gris:#f3f6f9;
+    --texto:#17212b;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--gris);color:var(--texto)}
-header{background:white;border-bottom:5px solid var(--naranja);padding:18px 16px 14px;text-align:center}
-.marca{display:flex;justify-content:space-between;align-items:center;max-width:850px;margin:auto;gap:12px}
-.gob{font-weight:800;color:#075b9c;font-size:1.25rem;text-align:left}
-.gob small{display:block;font-size:.65rem;letter-spacing:1px;font-weight:600}
-.sabes{font-weight:900;color:#075b9c;font-size:1.35rem}
-.container{max-width:850px;margin:auto;padding:20px 14px 40px}
-h1{text-align:center;color:#111;font-size:clamp(1.5rem,4vw,2.25rem);margin:10px 0 6px}
-.sub{text-align:center;margin:0 auto 18px;color:#555}
-.card{background:white;border-radius:18px;padding:20px;margin:16px 0;box-shadow:0 4px 15px rgba(0,0,0,.08)}
-.section-title{display:flex;align-items:center;gap:8px;color:var(--azul);font-size:1.25rem;font-weight:800;margin-bottom:12px}
-.item{display:flex;align-items:flex-start;gap:12px;padding:13px 8px;border-bottom:1px solid #e7ebef;cursor:pointer}
-.item:last-child{border-bottom:0}
-.item input{width:24px;height:24px;accent-color:var(--azul);flex:none;margin-top:0}
-.item span{font-size:1rem;line-height:1.35}
-.progress-wrap{position:sticky;top:0;z-index:10;background:white;padding:10px 0;border-bottom:1px solid #ddd}
-.progress-text{display:flex;justify-content:space-between;font-weight:700;font-size:.9rem;margin-bottom:6px}
-.progress{height:12px;background:#e3e8ed;border-radius:20px;overflow:hidden}
-.bar{height:100%;width:0;background:var(--azul);transition:.25s}
-button{width:100%;border:0;border-radius:12px;padding:15px;font-size:1.05rem;font-weight:800;cursor:pointer;background:var(--azul);color:white;margin-top:8px}
-button:hover{background:var(--azul2)}
-button.secondary{background:#eef3f7;color:var(--azul)}
-.result{display:none;text-align:center}
-.result.show{display:block}
-.score{font-size:3rem;font-weight:900;color:var(--azul);margin:4px}
-.badge{display:inline-block;border-radius:30px;padding:8px 15px;font-weight:800;margin:6px}
-.advice{text-align:left;background:#f7f9fb;border-left:5px solid var(--azul);padding:15px;border-radius:8px;margin-top:14px}
-.qrbox{display:none;margin-top:15px}
-.qrbox.show{display:block}
-input[type=url]{width:100%;padding:13px;border:1px solid #ccd5dd;border-radius:10px;font-size:1rem}
-#qrcode{display:flex;justify-content:center;margin:18px 0}
-footer{text-align:center;color:#6b747d;font-size:.82rem;padding:15px}
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:var(--gris);
+    color:var(--texto);
+}
+
+/* ENCABEZADO */
+
+header{
+    background:white;
+    border-bottom:5px solid var(--naranja);
+    padding:18px 16px 14px;
+}
+
+.marca{
+    max-width:900px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.guanajuato{
+    color:#075b9c;
+    font-weight:900;
+    font-size:1.25rem;
+}
+
+.guanajuato small{
+    display:block;
+    font-size:.65rem;
+    letter-spacing:1px;
+    font-weight:600;
+}
+
+.sabes{
+    color:#075b9c;
+    font-weight:900;
+    font-size:1.5rem;
+}
+
+/* CONTENEDOR */
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:20px 15px 50px;
+}
+
+h1{
+    text-align:center;
+    color:#111;
+    font-size:clamp(1.5rem,4vw,2.2rem);
+    margin:12px 0 8px;
+}
+
+.subtitulo{
+    text-align:center;
+    color:#555;
+    font-size:1rem;
+    margin-bottom:20px;
+}
+
+/* PROGRESO */
+
+.progreso{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:white;
+    padding:12px;
+    border-radius:12px;
+    box-shadow:0 3px 12px rgba(0,0,0,.10);
+    margin-bottom:18px;
+}
+
+.progreso-texto{
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+    margin-bottom:7px;
+}
+
+.progreso-fondo{
+    width:100%;
+    height:12px;
+    background:#e2e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progreso-barra{
+    height:100%;
+    width:0%;
+    background:var(--azul);
+    transition:.3s;
+}
+
+/* TARJETAS */
+
+.card{
+    background:white;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:18px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.titulo-seccion{
+    color:var(--azul);
+    font-size:1.25rem;
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+/* PREGUNTAS */
+
+.pregunta{
+    display:flex;
+    align-items:flex-start;
+    gap:12px;
+    padding:14px 8px;
+    border-bottom:1px solid #e7ebef;
+    cursor:pointer;
+}
+
+.pregunta:last-child{
+    border-bottom:none;
+}
+
+.pregunta:hover{
+    background:#f7fafc;
+}
+
+.pregunta input{
+    width:24px;
+    height:24px;
+    accent-color:var(--azul);
+    flex:none;
+    margin-top:0;
+}
+
+.pregunta span{
+    font-size:1rem;
+    line-height:1.4;
+}
+
+/* BOTONES */
+
+button{
+    width:100%;
+    border:none;
+    border-radius:12px;
+    padding:16px;
+    font-size:1.05rem;
+    font-weight:bold;
+    cursor:pointer;
+    background:var(--azul);
+    color:white;
+    margin-top:8px;
+}
+
+button:hover{
+    background:var(--azul-claro);
+}
+
+button.secundario{
+    background:#eaf0f5;
+    color:var(--azul);
+}
+
+/* RESULTADO */
+
+.resultado{
+    display:none;
+    text-align:center;
+}
+
+.resultado.mostrar{
+    display:block;
+}
+
+.puntos{
+    font-size:3.5rem;
+    font-weight:900;
+    color:var(--azul);
+    margin:5px;
+}
+
+.estado{
+    display:inline-block;
+    padding:10px 18px;
+    border-radius:30px;
+    font-weight:900;
+    margin:8px 0 15px;
+}
+
+.mensaje{
+    font-size:1.05rem;
+    line-height:1.5;
+}
+
+.recomendacion{
+    text-align:left;
+    background:#f6f8fa;
+    border-left:5px solid var(--azul);
+    padding:15px;
+    border-radius:8px;
+    margin-top:18px;
+    line-height:1.5;
+}
+
+/* RESULTADOS POR CATEGORÍA */
+
+.categorias{
+    margin-top:20px;
+    text-align:left;
+}
+
+.categoria{
+    margin:10px 0;
+}
+
+.categoria-nombre{
+    display:flex;
+    justify-content:space-between;
+    font-weight:bold;
+    margin-bottom:5px;
+}
+
+.barra-categoria{
+    height:10px;
+    background:#e2e7eb;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.barra-categoria div{
+    height:100%;
+    background:var(--azul);
+}
+
+/* PIE */
+
+footer{
+    text-align:center;
+    color:#68737d;
+    font-size:.85rem;
+    padding:20px;
+}
+
+/* CELULAR */
+
 @media(max-width:600px){
- .card{padding:15px}
- .marca{align-items:flex-start}
- .gob{font-size:1rem}.sabes{font-size:1.1rem}
+
+    .card{
+        padding:15px;
+    }
+
+    .guanajuato{
+        font-size:1rem;
+    }
+
+    .sab es{
+        font-size:1.1rem;
+    }
+
+    .pregunta{
+        padding:13px 5px;
+    }
+
+    .pregunta span{
+        font-size:.97rem;
+    }
+
 }
+
 </style>
+
 </head>
+
 <body>
 
 <header>
-  <div class="marca">
-    <div class="gob">GUANAJUATO<small>GOBIERNO DE LA GENTE</small></div>
-    <div class="sab es">SABES</div>
-  </div>
+
+    <div class="marca">
+
+        <div class="guanajuato">
+            GUANAJUATO
+            <small>GOBIERNO DE LA GENTE</small>
+        </div>
+
+        <div class="sab es">
+            SABES
+        </div>
+
+    </div>
+
 </header>
 
+
 <main class="container">
-  <h1>💻 ¿MI COMPUTADORA NECESITA MANTENIMIENTO?</h1>
-  <p class="sub">Marca ✓ en cada situación que presente tu computadora.</p>
 
-  <div class="progress-wrap">
-    <div class="progress-text"><span>Diagnóstico</span><span id="counter">0 de 10</span></div>
-    <div class="progress"><div class="bar" id="bar"></div></div>
-  </div>
+<h1>💻 ¿MI COMPUTADORA NECESITA MANTENIMIENTO?</h1>
 
-  <form id="checklist">
-    <section class="card">
-      <div class="section-title">🚀 1. Rendimiento</div>
-      <label class="item"><input type="checkbox" data-category="rendimiento"><span>Tarda más de 1 minuto en iniciar.</span></label>
-      <label class="item"><input type="checkbox" data-category="rendimiento"><span>Los programas tardan demasiado en abrir.</span></label>
-      <label class="item"><input type="checkbox" data-category="rendimiento"><span>Se congela o presenta “lag” durante el uso normal.</span></label>
-      <label class="item"><input type="checkbox" data-category="rendimiento"><span>El navegador tarda en responder.</span></label>
-      <label class="item"><input type="checkbox" data-category="rendimiento"><span>El equipo se vuelve lento cuando tengo varios programas abiertos.</span></label>
-    </section>
+<p class="subtitulo">
+    <strong>Instrucciones:</strong> Marca ✓ en cada situación que presente tu computadora.
+</p>
 
-    <section class="card">
-      <div class="section-title">💾 2. Almacenamiento</div>
-      <label class="item"><input type="checkbox" data-category="almacenamiento"><span>Tengo menos del 20% de espacio libre en el disco.</span></label>
-      <label class="item"><input type="checkbox" data-category="almacenamiento"><span>Tengo muchos archivos que ya no utilizo.</span></label>
-      <label class="item"><input type="checkbox" data-category="almacenamiento"><span>Tengo programas instalados que nunca uso.</span></label>
-      <label class="item"><input type="checkbox" data-category="almacenamiento"><span>La carpeta de Descargas está llena de archivos innecesarios.</span></label>
-      <label class="item"><input type="checkbox" data-category="almacenamiento"><span>Windows me muestra constantemente advertencias de poco espacio.</span></label>
-    </section>
 
-    <div class="card">
-      <button type="button" onclick="diagnosticar()">🔎 VER MI DIAGNÓSTICO</button>
-      <button type="button" class="secondary" onclick="reiniciar()">↺ Reiniciar</button>
+<!-- PROGRESO -->
+
+<div class="progreso">
+
+    <div class="progreso-texto">
+
+        <span>Diagnóstico</span>
+
+        <span id="contador">
+            0 de 25
+        </span>
+
     </div>
-  </form>
 
-  <section id="result" class="card result">
-    <div>Tu diagnóstico</div>
-    <div class="score" id="score">0/10</div>
-    <div id="badge" class="badge"></div>
-    <div id="message"></div>
-    <div class="advice" id="advice"></div>
-    <button type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})">⬆ Revisar checklist</button>
-  </section>
+    <div class="progreso-fondo">
 
-  <section class="card">
-    <div class="section-title">📱 ¿Quieres compartir este checklist?</div>
-    <p style="margin-top:0">Después de publicar esta página, pega aquí su dirección para generar un QR que tus alumnos puedan escanear.</p>
-    <input type="url" id="urlQR" placeholder="https://tu-pagina.com/checklist">
-    <button type="button" onclick="generarQR()">Generar QR</button>
-    <div id="qrbox" class="qrbox">
-      <div id="qrcode"></div>
-      <p style="text-align:center;font-size:.9rem;color:#666">Los alumnos podrán escanear este código desde su celular.</p>
+        <div
+            class="progreso-barra"
+            id="barraProgreso">
+        </div>
+
     </div>
-  </section>
+
+</div>
+
+
+<form id="checklist">
+
+
+<!-- ================================================= -->
+<!-- 1 RENDIMIENTO -->
+<!-- ================================================= -->
+
+<section class="card">
+
+<div class="titulo-seccion">
+🚀 1. Rendimiento
+</div>
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="rendimiento">
+
+<span>
+Tarda más de 1 minuto en iniciar.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="rendimiento">
+
+<span>
+Los programas tardan demasiado en abrir.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="rendimiento">
+
+<span>
+Se congela o presenta “lag” durante el uso normal.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="rendimiento">
+
+<span>
+El navegador tarda en responder.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="rendimiento">
+
+<span>
+El equipo se vuelve lento cuando tengo varios programas abiertos.
+</span>
+
+</label>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 2 ALMACENAMIENTO -->
+<!-- ================================================= -->
+
+<section class="card">
+
+<div class="titulo-seccion">
+💾 2. Almacenamiento
+</div>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="almacenamiento">
+
+<span>
+Tengo menos del 20% de espacio libre en el disco.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="almacenamiento">
+
+<span>
+Tengo muchos archivos que ya no utilizo.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="almacenamiento">
+
+<span>
+Tengo programas instalados que nunca uso.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="almacenamiento">
+
+<span>
+La carpeta de Descargas está llena de archivos innecesarios.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="almacenamiento">
+
+<span>
+Windows me muestra constantemente advertencias de poco espacio.
+</span>
+
+</label>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 3 SISTEMA -->
+<!-- ================================================= -->
+
+<section class="card">
+
+<div class="titulo-seccion">
+⚙️ 3. Sistema
+</div>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="sistema">
+
+<span>
+Tengo muchos programas que se ejecutan al iniciar Windows.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="sistema">
+
+<span>
+Hace mucho tiempo que no reviso las actualizaciones.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="sistema">
+
+<span>
+Nunca he revisado qué programas consumen más recursos.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="sistema">
+
+<span>
+Tengo aplicaciones que se ejecutan en segundo plano y no necesito.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="sistema">
+
+<span>
+Mi sistema presenta errores o comportamientos extraños.
+</span>
+
+</label>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 4 TEMPERATURA -->
+<!-- ================================================= -->
+
+<section class="card">
+
+<div class="titulo-seccion">
+🌡️ 4. Temperatura y limpieza
+</div>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="temperatura">
+
+<span>
+La computadora se calienta demasiado.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="temperatura">
+
+<span>
+El ventilador hace mucho ruido.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="temperatura">
+
+<span>
+El ventilador funciona casi todo el tiempo.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="temperatura">
+
+<span>
+Nunca he limpiado físicamente el equipo.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="temperatura">
+
+<span>
+Hay polvo acumulado en ventilaciones, teclado o gabinete.
+</span>
+
+</label>
+
+</section>
+
+
+<!-- ================================================= -->
+<!-- 5 SEGURIDAD -->
+<!-- ================================================= -->
+
+<section class="card">
+
+<div class="titulo-seccion">
+🛡️ 5. Seguridad y respaldo
+</div>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="seguridad">
+
+<span>
+No recuerdo cuándo fue la última vez que revisé mi equipo contra malware.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="seguridad">
+
+<span>
+No tengo respaldos de mis archivos importantes.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="seguridad">
+
+<span>
+Tengo programas que no recuerdo haber instalado.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="seguridad">
+
+<span>
+Aparecen ventanas o anuncios extraños.
+</span>
+
+</label>
+
+
+<label class="pregunta">
+
+<input type="checkbox" data-categoria="seguridad">
+
+<span>
+El navegador cambia configuraciones sin que yo lo haya hecho.
+</span>
+
+</label>
+
+</section>
+
+
+<!-- BOTONES -->
+
+<div class="card">
+
+<button
+    type="button"
+    onclick="diagnosticar()">
+
+🔎 VER MI DIAGNÓSTICO
+
+</button>
+
+
+<button
+    type="button"
+    class="secundario"
+    onclick="reiniciar()">
+
+↺ REINICIAR
+
+</button>
+
+</div>
+
+
+</form>
+
+
+<!-- ================================================= -->
+<!-- RESULTADO -->
+<!-- ================================================= -->
+
+<section
+    id="resultado"
+    class="card resultado">
+
+<h2>
+📊 RESULTADOS
+</h2>
+
+
+<div
+    class="puntos"
+    id="puntos">
+
+0/25
+
+</div>
+
+
+<div
+    class="estado"
+    id="estado">
+
+</div>
+
+
+<div
+    class="mensaje"
+    id="mensaje">
+
+</div>
+
+
+<div
+    class="recomendacion"
+    id="recomendacion">
+
+</div>
+
+
+<!-- RESULTADOS POR CATEGORÍA -->
+
+<div class="categorias">
+
+<h3>
+📋 Detalle por categoría
+</h3>
+
+
+<div class="categoria">
+
+<div class="categoria-nombre">
+
+<span>🚀 Rendimiento</span>
+
+<span id="rendimientoTexto">
+0/5
+</span>
+
+</div>
+
+<div class="barra-categoria">
+
+<div
+id="rendimientoBarra"
+style="width:0%">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="categoria">
+
+<div class="categoria-nombre">
+
+<span>💾 Almacenamiento</span>
+
+<span id="almacenamientoTexto">
+0/5
+</span>
+
+</div>
+
+<div class="barra-categoria">
+
+<div
+id="almacenamientoBarra"
+style="width:0%">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="categoria">
+
+<div class="categoria-nombre">
+
+<span>⚙️ Sistema</span>
+
+<span id="sistemaTexto">
+0/5
+</span>
+
+</div>
+
+<div class="barra-categoria">
+
+<div
+id="sistemaBarra"
+style="width:0%">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="categoria">
+
+<div class="categoria-nombre">
+
+<span>🌡️ Temperatura</span>
+
+<span id="temperaturaTexto">
+0/5
+</span>
+
+</div>
+
+<div class="barra-categoria">
+
+<div
+id="temperaturaBarra"
+style="width:0%">
+</div>
+
+</div>
+
+</div>
+
+
+<div class="categoria">
+
+<div class="categoria-nombre">
+
+<span>🛡️ Seguridad</span>
+
+<span id="seguridadTexto">
+0/5
+</span>
+
+</div>
+
+<div class="barra-categoria">
+
+<div
+id="seguridadBarra"
+style="width:0%">
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<button
+type="button"
+onclick="reiniciar()">
+
+↺ REALIZAR NUEVAMENTE
+
+</button>
+
+
+</section>
+
+
 </main>
 
+
 <footer>
-  Actividad de diagnóstico para la exposición: mantenimiento y optimización de computadoras.
+
+Actividad interactiva para la exposición
+<br>
+<strong>Mantenimiento y optimización de computadoras</strong>
+
 </footer>
 
-<script>
-const checks = [...document.querySelectorAll('input[type=checkbox]')];
-const counter = document.getElementById('counter');
-const bar = document.getElementById('bar');
 
-function actualizar(){
-  const n=checks.filter(c=>c.checked).length;
-  counter.textContent=`${n} de ${checks.length}`;
-  bar.style.width=(n/checks.length*100)+'%';
+<script>
+
+
+/* ==========================================
+   OBTENER CHECKBOXES
+========================================== */
+
+const checks =
+    document.querySelectorAll(
+        'input[type="checkbox"]'
+    );
+
+
+/* ==========================================
+   ACTUALIZAR PROGRESO
+========================================== */
+
+function actualizarProgreso(){
+
+    const marcadas =
+        document.querySelectorAll(
+            'input[type="checkbox"]:checked'
+        ).length;
+
+
+    const total = checks.length;
+
+
+    document.getElementById(
+        "contador"
+    ).textContent =
+        marcadas + " de " + total;
+
+
+    const porcentaje =
+        (marcadas / total) * 100;
+
+
+    document.getElementById(
+        "barraProgreso"
+    ).style.width =
+        porcentaje + "%";
+
 }
-checks.forEach(c=>c.addEventListener('change',actualizar));
+
+
+/* ==========================================
+   ESCUCHAR CAMBIOS
+========================================== */
+
+checks.forEach(function(check){
+
+    check.addEventListener(
+        "change",
+        actualizarProgreso
+    );
+
+});
+
+
+/* ==========================================
+   DIAGNÓSTICO
+========================================== */
 
 function diagnosticar(){
-  const n=checks.filter(c=>c.checked).length;
-  const result=document.getElementById('result');
-  document.getElementById('score').textContent=`${n}/${checks.length}`;
-  const badge=document.getElementById('badge');
-  const message=document.getElementById('message');
-  const advice=document.getElementById('advice');
 
-  if(n===0){
-    badge.textContent='🟢 Sin señales detectadas';
-    badge.style.background='#d1e7dd'; badge.style.color='#0f5132';
-    message.innerHTML='<strong>Tu computadora no presenta, según este checklist, señales de mantenimiento.</strong>';
-    advice.innerHTML='Mantén buenos hábitos: elimina archivos innecesarios periódicamente, actualiza Windows y tus programas, y realiza respaldos.';
-  } else if(n<=3){
-    badge.textContent='🟡 Mantenimiento preventivo';
-    badge.style.background='#fff3cd'; badge.style.color='#664d03';
-    message.innerHTML='<strong>Hay algunas señales que conviene atender.</strong>';
-    advice.innerHTML='Comienza con limpieza de archivos temporales, revisión de Descargas, desinstalación de programas que no utilizas y revisión de programas de inicio.';
-  } else if(n<=6){
-    badge.textContent='🟠 Mantenimiento recomendado';
-    badge.style.background='#ffe5d0'; badge.style.color='#7a3e00';
-    message.innerHTML='<strong>Tu equipo presenta varias señales de bajo rendimiento.</strong>';
-    advice.innerHTML='Realiza una optimización: libera espacio, revisa programas de inicio, desinstala software innecesario, actualiza el sistema y verifica el estado del almacenamiento.';
-  } else {
-    badge.textContent='🔴 Mantenimiento prioritario';
-    badge.style.background='#f8d7da'; badge.style.color='#842029';
-    message.innerHTML='<strong>Tu computadora presenta muchas señales de mantenimiento.</strong>';
-    advice.innerHTML='Haz un diagnóstico más completo antes de pensar en formatear. Respalda tus archivos importantes y revisa almacenamiento, temperatura, memoria RAM, programas de inicio y posibles problemas de software.';
-  }
-  result.classList.add('show');
-  result.scrollIntoView({behavior:'smooth'});
+    const marcadas =
+        document.querySelectorAll(
+            'input[type="checkbox"]:checked'
+        );
+
+
+    const puntos =
+        marcadas.length;
+
+
+    document.getElementById(
+        "puntos"
+    ).textContent =
+        puntos + "/25";
+
+
+    const estado =
+        document.getElementById("estado");
+
+
+    const mensaje =
+        document.getElementById("mensaje");
+
+
+    const recomendacion =
+        document.getElementById(
+            "recomendacion"
+        );
+
+
+    /* =====================================
+       RESULTADOS
+    ===================================== */
+
+
+    if(puntos <= 5){
+
+        estado.textContent =
+            "🟢 EQUIPO EN BUEN ESTADO";
+
+        estado.style.background =
+            "#d1e7dd";
+
+        estado.style.color =
+            "#0f5132";
+
+
+        mensaje.innerHTML =
+            "<strong>" +
+            "Tu computadora se encuentra en buenas condiciones según este checklist." +
+            "</strong>";
+
+
+        recomendacion.innerHTML =
+            "Mantén buenos hábitos de mantenimiento: " +
+            "elimina archivos innecesarios, " +
+            "mantén actualizado Windows, " +
+            "realiza respaldos y limpia físicamente " +
+            "el equipo de manera periódica.";
+
+    }
+
+
+    else if(puntos <= 12){
+
+        estado.textContent =
+            "🟡 REQUIERE MANTENIMIENTO";
+
+        estado.style.background =
+            "#fff3cd";
+
+        estado.style.color =
+            "#664d03";
+
+
+        mensaje.innerHTML =
+            "<strong>" +
+            "Es recomendable realizar una limpieza y optimización del sistema antes de que el rendimiento siga disminuyendo." +
+            "</strong>";
+
+
+        recomendacion.innerHTML =
+            "Comienza revisando el almacenamiento, " +
+            "los programas de inicio, " +
+            "las aplicaciones innecesarias, " +
+            "las actualizaciones y los archivos acumulados.";
+
+    }
+
+
+    else if(puntos <= 18){
+
+        estado.textContent =
+            "🟠 MANTENIMIENTO RECOMENDADO";
+
+        estado.style.background =
+            "#ffe5d0";
+
+        estado.style.color =
+            "#7a3e00";
+
+
+        mensaje.innerHTML =
+            "<strong>" +
+            "Tu equipo presenta varios indicadores de bajo rendimiento." +
+            "</strong>";
+
+
+        recomendacion.innerHTML =
+            "Realiza una revisión de almacenamiento, " +
+            "programas de inicio, actualizaciones, " +
+            "seguridad y temperatura. " +
+            "También conviene revisar el consumo de memoria RAM y procesador.";
+
+    }
+
+
+    else{
+
+        estado.textContent =
+            "🔴 MANTENIMIENTO PRIORITARIO";
+
+        estado.style.background =
+            "#f8d7da";
+
+        estado.style.color =
+            "#842029";
+
+
+        mensaje.innerHTML =
+            "<strong>" +
+            "Tu computadora presenta múltiples señales de problemas de rendimiento." +
+            "</strong>";
+
+
+        recomendacion.innerHTML =
+            "Realiza un diagnóstico completo. " +
+            "Respalda primero tus archivos importantes y revisa " +
+            "almacenamiento, temperatura, memoria RAM, " +
+            "programas de inicio, seguridad y el estado del hardware.";
+
+    }
+
+
+    /* =====================================
+       CALCULAR CATEGORÍAS
+    ===================================== */
+
+    const categorias = [
+        "rendimiento",
+        "almacenamiento",
+        "sistema",
+        "temperatura",
+        "seguridad"
+    ];
+
+
+    categorias.forEach(function(categoria){
+
+        const cantidad =
+            document.querySelectorAll(
+                'input[data-categoria="' +
+                categoria +
+                '"]:checked'
+            ).length;
+
+
+        document.getElementById(
+            categoria + "Texto"
+        ).textContent =
+            cantidad + "/5";
+
+
+        document.getElementById(
+            categoria + "Barra"
+        ).style.width =
+            (cantidad / 5 * 100) + "%";
+
+    });
+
+
+    /* Mostrar resultado */
+
+    document.getElementById(
+        "resultado"
+    ).classList.add("mostrar");
+
+
+    document.getElementById(
+        "resultado"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
 }
+
+
+/* ==========================================
+   REINICIAR
+========================================== */
 
 function reiniciar(){
-  checks.forEach(c=>c.checked=false);
-  actualizar();
-  document.getElementById('result').classList.remove('show');
-  window.scrollTo({top:0,behavior:'smooth'});
+
+    checks.forEach(function(check){
+
+        check.checked = false;
+
+    });
+
+
+    actualizarProgreso();
+
+
+    document.getElementById(
+        "resultado"
+    ).classList.remove("mostrar");
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
 }
 
-function generarQR(){
-  const url=document.getElementById('urlQR').value.trim();
-  if(!url){alert('Primero pega la dirección web de tu página.');return;}
-  const encoded=encodeURIComponent(url);
-  document.getElementById('qrcode').innerHTML=
-    `<img alt="Código QR" width="220" height="220"
-      src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=${encoded}">`;
-  document.getElementById('qrbox').classList.add('show');
-}
-actualizar();
+
+/* ==========================================
+   INICIO
+========================================== */
+
+actualizarProgreso();
+
 </script>
+
+
 </body>
+
 </html>
